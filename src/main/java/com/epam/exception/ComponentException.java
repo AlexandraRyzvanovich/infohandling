@@ -1,0 +1,7 @@
+package com.epam.exception;
+
+public class ComponentException extends Exception {
+    public ComponentException(String message) {
+        super(message);
+    }
+}
