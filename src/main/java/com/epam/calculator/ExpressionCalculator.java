@@ -21,6 +21,7 @@ public class ExpressionCalculator {
         char temp = lexeme.charAt(0);
         switch (temp) {
             case '+':
+
                 listExpression.add(new TerminalExpressionPlus());
                 break;
             case '-':

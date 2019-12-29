@@ -17,14 +17,14 @@ public class Leaf implements Component {
         return new Leaf(lexicalItem, leafType);
     }
 
-    public void add(Component c) throws ComponentException {
-        throw new ComponentException("Adding operation is not supprted");
+    public void add(Component c)  {
+        throw new ComponentException("Adding operation is not supported");
     }
-    public void remove(Component c) throws ComponentException {
+    public void remove(Component c) {
         throw new ComponentException("Removal operation is not supported");
 
     }
-    public List<Component> getComponent() throws ComponentException {
+    public List<Component> getComponent() {
         throw new ComponentException("Impossible to get components from leaf");
     }
 }
