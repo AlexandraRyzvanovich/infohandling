@@ -14,8 +14,7 @@ public class SentenceSorterByWordsLength implements Sorter {
     public Component sort(Component component) throws ComponentException {
         ArrayList<Component> sentence = new ArrayList<>(component.getComponent());
         Comparator<Component> wordsComparator = Comparator.comparing(a-> String.valueOf(a).length());
-        Collections.sort(sentence, wordsComparator);
-        Component sortedComposite = new Composite(sentence);
-        return sortedComposite;
+        sentence.sort(wordsComparator);
+        return new Composite(sentence);
     }
 }

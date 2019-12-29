@@ -13,8 +13,7 @@ public class ParagraphSorterBySentences implements Sorter {
     public Component sort(Component component) throws ComponentException {
         ArrayList<Component> components = new ArrayList<>(component.getComponent());
         Comparator<Component> comparatorSentences = Comparator.comparing(a -> a.getComponent().size());
-        Collections.sort(components, comparatorSentences);
-        Component sortedComposite = new Composite(components);
-        return sortedComposite;
+        components.sort(comparatorSentences);
+        return new Composite(components);
     }
 }

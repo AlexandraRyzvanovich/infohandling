@@ -8,7 +8,7 @@ public abstract class Parser {
     private Parser successor;
 
     Component parse(String text) throws ParserException, ComponentException {
-        Component component = null;
+        Component component;
         if ( getSuccessor() != null ){
             component  = getSuccessor().parse(text);
         }
