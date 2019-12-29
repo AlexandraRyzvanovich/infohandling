@@ -39,6 +39,8 @@ public class ExpressionCalculator {
     }
 }
 
+
+
     public Number calculate() {
         Context context = new Context();
         for (AbstractMathExpression terminal : listExpression) {
