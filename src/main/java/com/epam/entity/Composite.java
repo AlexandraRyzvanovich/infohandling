@@ -1,32 +1,28 @@
 package com.epam.entity;
 
-import com.epam.entity.Component;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class Composite implements Component {
-    private ArrayList<Component> components = new ArrayList<Component>();
+    private ArrayList<Component> components;
 
-    public void operation() {
-        System.out.println("Composite -> Call children operations");
-        int size = components.size();
-        for (int i = 0; i < size; i++) {
-            components.get(i).operation();
-        }
+    public Composite(ArrayList<Component> components) {
+        this.components = components;
+    }
+
+    public Composite() {
+        components = new ArrayList<>();
     }
 
     public void add(Component component) {
-        System.out.println("Composite -> Adding component");
         components.add(component);
     }
 
     public void remove(Component component) {
-        System.out.println("Composite -> Removing component");
         components.remove(component);
     }
 
-    public Object getChild(int index) {
-        System.out.println("Composite -> Getting component");
-        return components.get(index);
+    public List<Component> getComponent() {
+        return components;
     }
 }

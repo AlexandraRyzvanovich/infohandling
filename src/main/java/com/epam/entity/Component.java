@@ -1,8 +1,11 @@
 package com.epam.entity;
 
+import com.epam.exception.ComponentException;
+
+import java.util.List;
+
 public interface Component {
-    void operation();
-    void add(Component c);
-    void remove(Component c);
-    Object getChild (int index);
+    void add(Component c) throws ComponentException;
+    void remove(Component c) throws ComponentException;
+    List<Component> getComponent () throws ComponentException;
 }
