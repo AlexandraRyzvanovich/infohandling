@@ -1,49 +1,49 @@
 package com.epam.calculator;
 
-import com.epam.exception.CalculatorException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressionCalculator {
-    private List<AbstractMathExpression> listExpression;
+    private final static String LEXEME_REGEX = "\\s";
+    private final static String NUMBER_REGEX = "[:digit:]?";
+    private final List<MathExpression> listExpression;
 
-    public ExpressionCalculator(String expression) throws CalculatorException {
+    public ExpressionCalculator(String expression) {
         listExpression = new ArrayList<>();
         parse(expression);
     }
 
-    private void parse(String expression) throws CalculatorException {
-        for (String lexeme : expression.split("\\p{Blank}+")) {
+    private void parse(String expression) {
+        for (String lexeme : expression.split(LEXEME_REGEX)) {
             if (lexeme.isEmpty()) {
                 continue;
             }
         char temp = lexeme.charAt(0);
         switch (temp) {
             case '+':
-
-                listExpression.add(new TerminalExpressionPlus());
+                listExpression.add((Context c) -> c.pushValue(c.popValue() + c.popValue()));
                 break;
             case '-':
-                listExpression.add(new TerminalExpressionMinus());
+                listExpression.add((Context c) -> c.pushValue(c.popValue() - c.popValue()));
                 break;
             case '*':
-                listExpression.add(new TerminalExpressionMultiply());
+                listExpression.add((Context c) ->  c.pushValue(c.popValue() * c.popValue()));
                 break;
             case '/':
-                listExpression.add(new TerminalExpressionDivide());
+                listExpression.add((Context c) -> c.pushValue((c.popValue() / c.popValue())));
                 break;
             default:
-                throw new CalculatorException("no such operation");
+                if(lexeme.matches(NUMBER_REGEX)){
+                    listExpression.add(
+                            new NonTerminalExpressionNumber(Integer.valueOf(lexeme)));
+                }
         }
     }
 }
 
-
-
     public Number calculate() {
         Context context = new Context();
-        for (AbstractMathExpression terminal : listExpression) {
+        for (MathExpression terminal : listExpression) {
             terminal.interpret(context);
         }
         return context.popValue();

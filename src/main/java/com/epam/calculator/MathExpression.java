@@ -1,6 +1,6 @@
 package com.epam.calculator;
 
 @FunctionalInterface
-public interface AbstractMathExpression {
+public interface MathExpression {
     void interpret(Context context);
 }

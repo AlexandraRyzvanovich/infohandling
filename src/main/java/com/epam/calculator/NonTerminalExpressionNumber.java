@@ -1,6 +1,6 @@
 package com.epam.calculator;
 
-public class NonTerminalExpressionNumber implements AbstractMathExpression {
+public class NonTerminalExpressionNumber implements MathExpression {
     private int number;
 
     public NonTerminalExpressionNumber(int number) {
