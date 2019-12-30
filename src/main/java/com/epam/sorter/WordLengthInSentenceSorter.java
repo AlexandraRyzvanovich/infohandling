@@ -3,7 +3,6 @@ package com.epam.sorter;
 import com.epam.entity.Component;
 import com.epam.entity.Composite;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
