@@ -2,7 +2,6 @@ package com.epam.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Composite implements Component {
     private List<Component> components;

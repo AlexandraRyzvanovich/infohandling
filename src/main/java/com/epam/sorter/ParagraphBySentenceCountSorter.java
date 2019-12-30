@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class ParagraphSorterBySentencesCount implements Sorter {
+public class ParagraphBySentenceCountSorter implements Sorter {
     @Override
     public Component sort(Component component) throws ComponentException {
         List<Component> componentsList = component.getComponent();
-        List<Component> components = new ArrayList<>(componentsList);
         Comparator<Component> comparatorSentences = Comparator.comparing(a -> a.getComponent().size());
-        components.sort(comparatorSentences);
-        return new Composite(components);
+        componentsList.sort(comparatorSentences.reversed());
+        return new Composite(componentsList);
     }
 }

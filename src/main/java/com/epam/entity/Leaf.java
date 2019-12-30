@@ -3,7 +3,6 @@ package com.epam.entity;
 import com.epam.exception.ComponentException;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Leaf implements Component {
     String lexicalItem;
@@ -38,8 +37,10 @@ public class Leaf implements Component {
             return false;
         }
         Leaf leaf = (Leaf) o;
-        return lexicalItem.equals(leaf.lexicalItem) &&
-                leafType == leaf.leafType;
+        if(lexicalItem == null || !lexicalItem.equals(leaf.lexicalItem)){
+            return false;
+        }
+        return leafType == leaf.leafType;
     }
 
     @Override
@@ -49,5 +50,10 @@ public class Leaf implements Component {
         result = prime * result + lexicalItem.hashCode();
         result = prime * result + leafType.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return  lexicalItem;
     }
 }

@@ -1,5 +1,5 @@
 package com.epam.entity;
 
 public enum LeafType {
-    WORD, EXPRESSION
+    WORD, EXPRESSION, SENTENCE
 }
