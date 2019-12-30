@@ -3,8 +3,8 @@ package com.epam.calculator;
 import java.util.ArrayList;
 
 public class ExpressionCalculator {
-    private final static String LEXEME_REGEX = "\\s+";
-    private final static String NUMBER_REGEX = "-?[0-9]+";
+    private static final String LEXEME_REGEX = "\\s+";
+    private static final  String NUMBER_REGEX = "-?[0-9]+";
     private ArrayList<MathExpression> listExpression;
 
     public ExpressionCalculator(String expression) {
@@ -28,7 +28,7 @@ public class ExpressionCalculator {
                 listExpression.add((Context c) -> c.pushValue(c.popValue() / c.popValue()));
                 break;
             default:
-                if(lexeme.matches(NUMBER_REGEX)){
+                if (lexeme.matches(NUMBER_REGEX)) {
                     listExpression.add(
                             new NonTerminalExpressionNumber(Integer.parseInt(lexeme)));
                 }

@@ -5,9 +5,6 @@ import com.epam.exception.ParserException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TextParserTest {
     private TextParser textParser;
 
