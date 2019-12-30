@@ -24,7 +24,7 @@ public class SorterFactoryTest {
         //when
         Sorter sentenceSorter = factory.createSorter(WORDS_IN_SENTENCE_SORTER);
         //then
-        Assert.assertEquals(sentenceSorter.getClass(), new WordLengthInSentenceSorter().getClass());
+        Assert.assertEquals(sentenceSorter.getClass(), WordLengthInSentenceSorter.class);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class SorterFactoryTest {
         //when
         Sorter sentenceSorter = factory.createSorter(PARAGRAPH_SORTER);
         //then
-        Assert.assertEquals(sentenceSorter.getClass(), new ParagraphBySentenceCountSorter().getClass());
+        Assert.assertEquals(sentenceSorter.getClass(), ParagraphBySentenceCountSorter.class);
     }
 
     @Test(expectedExceptions = SorterException.class)
