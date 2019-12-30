@@ -4,7 +4,6 @@ import com.epam.entity.Component;
 import com.epam.entity.Composite;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class SentenceSorterByWordsCount implements Sorter {

@@ -30,7 +30,7 @@ public class ExpressionCalculator {
             default:
                 if(lexeme.matches(NUMBER_REGEX)){
                     listExpression.add(
-                            new NonTerminalExpressionNumber(Integer.valueOf(lexeme)));
+                            new NonTerminalExpressionNumber(Integer.parseInt(lexeme)));
                 }
         }
     }
