@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 
 public class SentenceParser extends Parser {
-    private final static String LEXEM_REGEX = "";
+    private final static String EXPRESSION_REGEX = "";
     private final static String WORD_REGEX = "";
 
     @Override
@@ -34,7 +34,7 @@ public class SentenceParser extends Parser {
 
     private List<String> findLexicalItems(String sentence){
         List<String> lexicalItems = new ArrayList<>();
-        Pattern pattern = Pattern.compile(LEXEM_REGEX);
+        Pattern pattern = Pattern.compile(EXPRESSION_REGEX);
         Matcher matcher = pattern.matcher(sentence);
         while (matcher.find()){
             lexicalItems.add(matcher.group());

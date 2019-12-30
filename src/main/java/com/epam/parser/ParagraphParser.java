@@ -3,7 +3,7 @@ package com.epam.parser;
 import com.epam.entity.Component;
 import com.epam.entity.Composite;
 import com.epam.exception.ComponentException;
-import sun.tools.jstat.ParserException;
+import com.epam.exception.ParserException;
 
 import java.util.ArrayList;
 import java.util.List;

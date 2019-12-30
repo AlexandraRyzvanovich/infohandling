@@ -1,12 +1,11 @@
 package com.epam.calculator;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ExpressionCalculator {
-    private final static String LEXEME_REGEX = "\\s";
-    private final static String NUMBER_REGEX = "[:digit:]?";
-    private final List<MathExpression> listExpression;
+    private final static String LEXEME_REGEX = "\\s+";
+    private final static String NUMBER_REGEX = "-?[0-9]+";
+    private ArrayList<MathExpression> listExpression;
 
     public ExpressionCalculator(String expression) {
         listExpression = new ArrayList<>();
@@ -15,22 +14,18 @@ public class ExpressionCalculator {
 
     private void parse(String expression) {
         for (String lexeme : expression.split(LEXEME_REGEX)) {
-            if (lexeme.isEmpty()) {
-                continue;
-            }
-        char temp = lexeme.charAt(0);
-        switch (temp) {
-            case '+':
+        switch (lexeme) {
+            case "+":
                 listExpression.add((Context c) -> c.pushValue(c.popValue() + c.popValue()));
                 break;
-            case '-':
+            case "-":
                 listExpression.add((Context c) -> c.pushValue(c.popValue() - c.popValue()));
                 break;
-            case '*':
-                listExpression.add((Context c) ->  c.pushValue(c.popValue() * c.popValue()));
+            case "*":
+                listExpression.add((Context c) -> c.pushValue(c.popValue() * c.popValue()));
                 break;
-            case '/':
-                listExpression.add((Context c) -> c.pushValue((c.popValue() / c.popValue())));
+            case "/":
+                listExpression.add((Context c) -> c.pushValue(c.popValue() / c.popValue()));
                 break;
             default:
                 if(lexeme.matches(NUMBER_REGEX)){
@@ -41,7 +36,7 @@ public class ExpressionCalculator {
     }
 }
 
-    public Number calculate() {
+    public int calculate() {
         Context context = new Context();
         for (MathExpression terminal : listExpression) {
             terminal.interpret(context);

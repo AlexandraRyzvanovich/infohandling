@@ -1,9 +1,10 @@
 package com.epam.calculator;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class Context {
-    private ArrayDeque<Integer> contextValues = new ArrayDeque<>();
+    private Deque<Integer> contextValues = new ArrayDeque<>();
 
     public Integer popValue() {
         return contextValues.pop();

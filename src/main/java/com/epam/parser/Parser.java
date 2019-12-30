@@ -2,21 +2,12 @@ package com.epam.parser;
 
 import com.epam.entity.Component;
 import com.epam.exception.ComponentException;
-import sun.tools.jstat.ParserException;
+import com.epam.exception.ParserException;
 
 public abstract class Parser {
     private Parser successor;
 
-    Component parse(String text) throws ParserException, ComponentException {
-        Component component;
-        if ( getSuccessor() != null ){
-            component  = getSuccessor().parse(text);
-        }
-        else{
-            throw new ParserException("Unable to find the correct parser. ");
-        }
-        return component;
-    }
+    public abstract Component parse(String text) throws ParserException, ComponentException;
 
     Parser getSuccessor() {
         return successor;
