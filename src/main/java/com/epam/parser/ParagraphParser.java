@@ -31,12 +31,11 @@ public class ParagraphParser extends Parser {
         return paragraphComponent;
     }
 
-    private List<String> findSentences(String paragraph){
+    private List<String> findSentences (String paragraph) {
         List<String> sentences = new ArrayList<>();
         Pattern pattern = Pattern.compile(BY_SENTENCES_REGEX);
         Matcher matcher = pattern.matcher(paragraph);
-        while (matcher.find())
-        {
+        while (matcher.find()) {
             sentences.add(matcher.group());
         }
         return sentences;

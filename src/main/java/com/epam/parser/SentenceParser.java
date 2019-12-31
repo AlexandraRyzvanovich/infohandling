@@ -21,9 +21,9 @@ public class SentenceParser extends Parser {
         List<String> lexicalItems = findLexicalItems(sentence);
         for (String lexicalItem : lexicalItems ) {
             Component lexicalItemLeaf;
-            if(lexicalItem.matches(WORD_REGEX)){
+            if (lexicalItem.matches(WORD_REGEX)) {
                 lexicalItemLeaf = Leaf.getLeaf(lexicalItem, LeafType.EXPRESSION);
-            }else {
+            } else {
                 lexicalItemLeaf = Leaf.getLeaf(lexicalItem, LeafType.WORD);
             }
             sentenceComponent.add(lexicalItemLeaf);
@@ -31,11 +31,11 @@ public class SentenceParser extends Parser {
         return sentenceComponent;
     }
 
-    private List<String> findLexicalItems(String sentence){
+    private List<String> findLexicalItems (String sentence) {
         List<String> lexicalItems = new ArrayList<>();
         Pattern pattern = Pattern.compile(EXPRESSION_REGEX);
         Matcher matcher = pattern.matcher(sentence);
-        while (matcher.find()){
+        while (matcher.find()) {
             lexicalItems.add(matcher.group());
         }
         return lexicalItems;

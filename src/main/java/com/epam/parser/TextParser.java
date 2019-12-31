@@ -17,10 +17,10 @@ public class TextParser extends Parser {
         Component textComponent = new Composite();
         String[] paragraphs = text.split(BY_PARAGRAPH_REGEX);
         for (String paragraph  : paragraphs) {
-            if(getSuccessor()!=null){
+            if (getSuccessor() != null) {
                 Component paragraphComponent = getSuccessor().parse(paragraph);
                 textComponent.add(paragraphComponent);
-            }else {
+            } else {
                 throw new ParserException("Successor not found. Impossible to continue parsing");
             }
         }
