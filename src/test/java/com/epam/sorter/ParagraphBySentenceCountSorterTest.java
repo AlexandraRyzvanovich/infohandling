@@ -11,10 +11,10 @@ import org.testng.annotations.Test;
 
 public class ParagraphBySentenceCountSorterTest {
     private ParagraphBySentenceCountSorter paragraphBySentenceCountSorter;
-    private static final Component SENTENCE_ONE = new Leaf("I'm the first sentence. ", LeafType.SENTENCE);
-    private static final Component SENTENCE_TWO = new Leaf("I'm the second sentence.", LeafType.SENTENCE);
-    private static final Component SENTENCE_THREE = new Leaf("I'm the third sentence.", LeafType.SENTENCE);
-    private static final Component SENTENCE_FOUR = new Leaf("I'm the fourth sentence", LeafType.SENTENCE);
+    private static final Component SENTENCE_ONE = Leaf.getLeaf("I'm the first sentence. ", LeafType.WORD);
+    private static final Component SENTENCE_TWO = Leaf.getLeaf("I'm the second sentence.", LeafType.WORD);
+    private static final Component SENTENCE_THREE = Leaf.getLeaf("I'm the third sentence.", LeafType.WORD);
+    private static final Component SENTENCE_FOUR = Leaf.getLeaf("I'm the fourth sentence", LeafType.WORD);
 
     @BeforeClass
     public void setUp() {

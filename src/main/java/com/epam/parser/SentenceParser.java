@@ -11,21 +11,20 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class SentenceParser extends Parser {
-    private final static String EXPRESSION_REGEX = "";
-    private final static String WORD_REGEX = "";
+    private final static String EXPRESSION_REGEX = "[a-zA-z?]+|-?\\d+(\\s(-?\\d+|\\+|-|\\*|/))+";
+    private final static String WORD_REGEX = "[A-Za-z]";
 
     @Override
     public Component parse(String sentence) throws ComponentException {
         Component sentenceComponent = new Composite();
         List<String> lexicalItems = findLexicalItems(sentence);
         for (String lexicalItem : lexicalItems ) {
-            Leaf lexicalItemLeaf;
+            Component lexicalItemLeaf;
             if(lexicalItem.matches(WORD_REGEX)){
-                lexicalItemLeaf = Leaf.getLeaf(lexicalItem, LeafType.WORD);
-            }else {
                 lexicalItemLeaf = Leaf.getLeaf(lexicalItem, LeafType.EXPRESSION);
+            }else {
+                lexicalItemLeaf = Leaf.getLeaf(lexicalItem, LeafType.WORD);
             }
             sentenceComponent.add(lexicalItemLeaf);
         }

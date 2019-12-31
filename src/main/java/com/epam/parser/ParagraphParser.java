@@ -2,7 +2,6 @@ package com.epam.parser;
 
 import com.epam.entity.Component;
 import com.epam.entity.Composite;
-import com.epam.exception.ComponentException;
 import com.epam.exception.ParserException;
 
 import java.util.ArrayList;
@@ -13,8 +12,12 @@ import java.util.regex.Pattern;
 public class ParagraphParser extends Parser {
     private final String BY_SENTENCES_REGEX = "([^.!?]+)";
 
+    public ParagraphParser(Parser successor) {
+        setSuccessor(successor);
+    }
+
     @Override
-    public Component parse(String paragraph) throws ParserException, ComponentException {
+    public Component parse(String paragraph) throws ParserException {
         Component paragraphComponent = new Composite();
         List<String> sentencesList = findSentences(paragraph);
         for (String sentence:sentencesList) {
@@ -37,6 +40,5 @@ public class ParagraphParser extends Parser {
             sentences.add(matcher.group());
         }
         return sentences;
-
     }
 }

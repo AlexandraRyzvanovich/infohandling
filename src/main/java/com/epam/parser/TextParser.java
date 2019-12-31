@@ -8,6 +8,10 @@ import com.epam.exception.ParserException;
 public class TextParser extends Parser {
     private final String BY_PARAGRAPH_REGEX = "\\n";
 
+    public TextParser(Parser successor) {
+        setSuccessor(successor);
+    }
+
     @Override
     public Component parse(String text) throws ParserException, ComponentException {
         Component textComponent = new Composite();
