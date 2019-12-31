@@ -4,9 +4,12 @@ import com.epam.entity.Component;
 import com.epam.entity.Composite;
 import com.epam.exception.ComponentException;
 import com.epam.exception.ParserException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TextParser extends Parser {
     private final String BY_PARAGRAPH_REGEX = "\\n";
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public TextParser(Parser successor) {
         setSuccessor(successor);
@@ -24,6 +27,7 @@ public class TextParser extends Parser {
                 throw new ParserException("Successor not found. Impossible to continue parsing");
             }
         }
+        LOGGER.info("Text was parsed successfully");
         return textComponent;
     }
 }

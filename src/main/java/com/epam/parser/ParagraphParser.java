@@ -3,6 +3,8 @@ package com.epam.parser;
 import com.epam.entity.Component;
 import com.epam.entity.Composite;
 import com.epam.exception.ParserException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.regex.Pattern;
 
 public class ParagraphParser extends Parser {
     private final String BY_SENTENCES_REGEX = "([^.!?]+)";
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public ParagraphParser(Parser successor) {
         setSuccessor(successor);
@@ -28,6 +31,7 @@ public class ParagraphParser extends Parser {
                 throw new ParserException("Successor not found. Impossible to continue parsing");
             }
         }
+        LOGGER.info("Paragraph parsed successfully");
         return paragraphComponent;
     }
 

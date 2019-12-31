@@ -5,6 +5,8 @@ import com.epam.entity.Composite;
 import com.epam.entity.Leaf;
 import com.epam.entity.LeafType;
 import com.epam.exception.ComponentException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.regex.Pattern;
 public class SentenceParser extends Parser {
     private final static String EXPRESSION_REGEX = "[a-zA-z?]+|-?\\d+(\\s(-?\\d+|\\+|-|\\*|/))+";
     private final static String WORD_REGEX = "[A-Za-z]";
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public Component parse(String sentence) throws ComponentException {
@@ -28,6 +31,7 @@ public class SentenceParser extends Parser {
             }
             sentenceComponent.add(lexicalItemLeaf);
         }
+        LOGGER.info("Sentence was parsed successfully");
         return sentenceComponent;
     }
 
