@@ -32,24 +32,31 @@ public class ParagraphParserTest {
     public Object[][] provideData(){
         String paragraphText = "I'm the first sentence. I'm the second sentence! I'm the third sentence.";
         Component expectedParagraphComponent = new Composite();
-        expectedParagraphComponent.add(TestDataProvider.LEAF_SENTENCE_ONE);
-        expectedParagraphComponent.add(TestDataProvider.LEAF_SENTENCE_TWO);
-        expectedParagraphComponent.add(TestDataProvider.LEAF_SENTENCE_THREE);
+        Component sentence1 = new Composite();
+        sentence1.add(TestDataProvider.LEAF_SENTENCE_ONE);
+        Component sentence2 = new Composite();
+        sentence2.add(TestDataProvider.LEAF_SENTENCE_TWO);
+        Component sentence3 = new Composite();
+        sentence3.add(TestDataProvider.LEAF_SENTENCE_THREE);
+        expectedParagraphComponent.add(sentence1);
+        expectedParagraphComponent.add(sentence2);
+        expectedParagraphComponent.add(sentence3);
         return new Object[][]{
-                { expectedParagraphComponent, paragraphText}
+                { sentence1, sentence2, sentence3, expectedParagraphComponent, paragraphText}
         };
     }
 
     @Test(dataProvider = "provideData")
-    public void testParagraphParserShouldReturnComponentSizeThreeWhenCheckParagraphComponentLength( Component expectedParagraphComponent,
+    public void testParagraphParserShouldReturnComponentSizeThreeWhenCheckParagraphComponentLength(Component sentence1,
+                                        Component sentence2, Component sentence3, Component expectedParagraphComponent,
                                                                                                     String paragraphText ) throws ParserException {
         //given
-        when(sentenceParser.parse(TestDataProvider.SENTENCE_ONE)).thenReturn(TestDataProvider.LEAF_SENTENCE_ONE);
-        when(sentenceParser.parse(TestDataProvider.SENTENCE_TWO)).thenReturn(TestDataProvider.LEAF_SENTENCE_TWO);
-        when(sentenceParser.parse(TestDataProvider.SENTENCE_THREE)).thenReturn(TestDataProvider.LEAF_SENTENCE_THREE);
+        when(sentenceParser.parse(TestDataProvider.SENTENCE_ONE)).thenReturn(sentence1);
+        when(sentenceParser.parse(TestDataProvider.SENTENCE_TWO)).thenReturn(sentence2);
+        when(sentenceParser.parse(TestDataProvider.SENTENCE_THREE)).thenReturn(sentence3);
         //when
         Component actualParagraphComponent = paragraphParser.parse(paragraphText);
         //then
-        Assert.assertEquals(actualParagraphComponent.getComponent(), expectedParagraphComponent.getComponent());
+        Assert.assertEquals(actualParagraphComponent.getComponent().size(), expectedParagraphComponent.getComponent().size());
     }
 }

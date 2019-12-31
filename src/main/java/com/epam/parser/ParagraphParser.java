@@ -20,7 +20,7 @@ public class ParagraphParser extends Parser {
     public Component parse(String paragraph) throws ParserException {
         Component paragraphComponent = new Composite();
         List<String> sentencesList = findSentences(paragraph);
-        for (String sentence:sentencesList) {
+        for (String sentence : sentencesList) {
             if (getSuccessor() != null) {
                 Component sentenceComponent = getSuccessor().parse(sentence);
                 paragraphComponent.add(sentenceComponent);

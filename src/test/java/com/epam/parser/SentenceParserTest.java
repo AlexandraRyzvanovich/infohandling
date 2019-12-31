@@ -27,13 +27,12 @@ public class SentenceParserTest {
     }
 
     @Test(dataProvider = "provideTestDataForSentenceParser")
-    public void SentenceParserTestShouldReturnTrueWhenReturn(String sentence, Component expectedSentenceComponent){
+    public void SentenceParserTestShouldReturnTrueWhenReturnTrueWhenSentenceParsedSuccessfully(String sentence, Component expectedSentenceComponent){
         //given
 
         //when
         Component actualComponent = sentenceParser.parse(sentence);
         //then
-        Assert.assertEquals(actualComponent.getComponent().get(0), expectedSentenceComponent.getComponent().get(0));
-        Assert.assertEquals(actualComponent.getComponent().get(1), expectedSentenceComponent.getComponent().get(1));
+        Assert.assertEquals(actualComponent.getComponent(), expectedSentenceComponent.getComponent());
     }
 }
