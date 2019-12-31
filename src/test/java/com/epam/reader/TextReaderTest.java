@@ -21,7 +21,7 @@ public class TextReaderTest {
     public void textReaderTestShouldReturnTrueOnSizeResultAndLineComparingWhenValidPathGiven() throws ReaderException {
         //given
         int linesCount = 10;
-        String secondLine = "counting expressions like: [ 8 2 7 4 + * -]. End of first paragraph.";
+        String secondLine = "counting expressions like: [8 2 7 4 + * -]. End of first paragraph.";
         //when
         List<String> actualResult = textReader.read(VALID_FILE_PATH);
         //then
